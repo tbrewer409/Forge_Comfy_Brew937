@@ -28,17 +28,16 @@ git clone --depth=1 https://github.com/zanllp/sd-webui-infinite-image-browsing.g
 git clone --depth=1 https://github.com/civitai/sd_civitai_extension.git extensions/sd_civitai_extension
 git clone --depth=1 https://github.com/BlafKing/sd-civitai-browser-plus.git extensions/sd-civitai-browser-plus
 
-# Install dependencies for various extensions
-cd /stable-diffusion-webui/extensions/sd-webui-reactor
-pip3 install -r requirements.txt
-pip3 install onnxruntime-gpu
-cd /stable-diffusion-webui/extensions/infinite-image-browsing
-pip3 install -r requirements.txt
-cd /stable-diffusion-webui/extensions/sd_civitai_extension
-pip3 install -r requirements.txt
+# Install dependencies for all extensions in a single pip invocation.
+# This avoids repeated uninstall/install cycles when different extensions
+# require the same packages with conflicting versions.
+pip3 install \
+  -r extensions/sd-webui-reactor/requirements.txt \
+  -r extensions/infinite-image-browsing/requirements.txt \
+  -r extensions/sd_civitai_extension/requirements.txt \
+  onnxruntime-gpu \
+  send2trash beautifulsoup4 ZipUnicode fake-useragent packaging pysocks
 
-cd /stable-diffusion-webui/extensions/sd-civitai-browser-plus
-pip3 install send2trash beautifulsoup4 ZipUnicode fake-useragent packaging pysocks
 deactivate
 
 # Add inswapper model for the ReActor extension
