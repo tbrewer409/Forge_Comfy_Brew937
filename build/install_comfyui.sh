@@ -58,7 +58,12 @@ git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git
 # ComfyUI-Logic
 git clone https://github.com/theUpsider/ComfyUI-Logic.git
 
+
+# Install extension requirements in a single pip invocation.
+# Installing them together prevents pip from repeatedly uninstalling and
+# reinstalling packages when version constraints overlap between extensions.
 # Install extension requirements in a single step
+
 pip install \
   -r ComfyUI-Manager/requirements.txt \
   -r rgthree-comfy/requirements.txt \
